@@ -24,10 +24,16 @@ function createTable(lastname,age,car) {
    
 }
 
+function getUsers() {
+  return sequelize.query('SELECT * FROM users', { type: QueryTypes.SELECT });
+}
+
 
 async function main() {
-  await createTable('ahmad',10,'wewe');
-  console.log('Table created');
+  // await createTable('ahmad',10,'wewe');
+  // console.log('Table created');
+  const users=await getUsers();
+  console.log(users);
   sequelize.close();
 }
 
