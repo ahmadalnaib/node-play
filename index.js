@@ -19,14 +19,14 @@ const sequelize = new Sequelize('node', 'root', '', {
 // testConnection();
 
 
-function createTable() {
- return sequelize.query(`INSERT INTO users (lastname,age, car) VALUES ("John Doe",3, "ALNAIB@GMAIL.COM")`, { type: QueryTypes.INSERT })
+function createTable(lastname,age,car) {
+ return sequelize.query(`INSERT INTO users (lastname,age, car) VALUES ('${lastname}','${age}', "${car}")`, { type: QueryTypes.INSERT })
    
 }
 
 
 async function main() {
-  await createTable();
+  await createTable('ahmad',10,'wewe');
   console.log('Table created');
   sequelize.close();
 }
