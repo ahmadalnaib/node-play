@@ -28,10 +28,15 @@ function getUsers() {
   return sequelize.query('SELECT * FROM users', { type: QueryTypes.SELECT });
 }
 
+function deleteUser(id) {
+  return sequelize.query(`DELETE FROM users WHERE id=${id}`, { type: QueryTypes.DELETE });
+}
+
 
 async function main() {
   // await createTable('ahmad',10,'wewe');
   // console.log('Table created');
+   await deleteUser(0);
   const users=await getUsers();
   console.log(users);
   sequelize.close();
